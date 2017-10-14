@@ -7,6 +7,8 @@
 
 #include "Document.h"
 
+
+// constructor
 Document::Document() {
 	// TODO Auto-generated constructor stub
 
