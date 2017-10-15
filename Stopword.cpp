@@ -6,13 +6,29 @@
  */
 
 #include "Stopword.h"
+#include <fstream>
 
-Stopword::Stopword() {
-	// TODO Auto-generated constructor stub
+Stopword::Stopword() {}
+
+Stopword::Stopword(string filename)
+{
+	ifstream fin(filename);
+	string words;
+	while(fin >> words){
+		stopword.push_back(words);
+	}
 
 }
 
-Stopword::~Stopword() {
-	// TODO Auto-generated destructor stub
+Stopword::~Stopword() {}
+
+
+bool Stopword::operator ()(string word)
+{
+
+	for(string w:stopword){
+		if(w == word)return true;
+	}
+	return false;
 }
 

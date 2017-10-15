@@ -9,18 +9,18 @@
 #define STOPWORD_H_
 #include <string>
 #include <vector>
+using namespace std;
 
 class Stopword {
 
 private:
-	std::vector<std::string> stopdwords;
+	vector<string> stopdwords;
 
 public:
 	Stopword();
-	Stopword(Std);
-	virtual ~Stopword();
-
-	bool operator()(const std::string &) const;
+	Stopword(string filename);
+	~Stopword();
+	bool operator ()(string word);
 };
 
 #endif /* STOPWORD_H_ */
