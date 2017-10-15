@@ -11,13 +11,12 @@
 Stopword::Stopword() {}
 
 
-Stopword::Stopword(string fname)
-	:filename(fname)
+Stopword::Stopword(string filename)
 {
 	ifstream fin(filename);
 	string words;
 	while(fin >> words){
-		stopword.push_back(words);
+		stopwords.push_back(words);
 	}
 
 }
