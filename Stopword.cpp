@@ -10,7 +10,9 @@
 
 Stopword::Stopword() {}
 
-Stopword::Stopword(string filename)
+
+Stopword::Stopword(string fname)
+	:filename(fname)
 {
 	ifstream fin(filename);
 	string words;
@@ -22,11 +24,10 @@ Stopword::Stopword(string filename)
 
 Stopword::~Stopword() {}
 
-
 bool Stopword::operator ()(string word)
 {
 
-	for(string w:stopword){
+	for(string w:stopwords){
 		if(w == word)return true;
 	}
 	return false;

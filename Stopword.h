@@ -14,6 +14,7 @@ using namespace std;
 class Stopword {
 
 private:
+	string filename;
 	vector<string> stopdwords;
 
 public:
