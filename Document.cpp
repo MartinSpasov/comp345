@@ -6,15 +6,15 @@
 
 
 document::document(string name)
-	:filename(name),filesize(0)
+	:filename(name)
 {
-		ifstream fin(d.filename);
+		ifstream fin(filename);
 		string content;
 		while(fin >> content){
-			d.filecontent += content + " ";
+			filecontent += content + " ";
 		}
-		d.filecontent = d.filecontent.substr(0,d.filecontent.size()-1);
-		d.filesize = d.filecontent.size();
+		filecontent = filecontent.substr(0,filecontent.size()-1);
+		filesize = filecontent.size();
 
 }
 document::document()
