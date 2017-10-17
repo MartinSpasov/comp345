@@ -29,7 +29,13 @@ int main(){
 		cout << "\nEnter query you want to search for or -1 to exit:" << endl;
 		cin >> query;
 		if(query == "-1")break;
-		q.query(idx,query,idx.indexersize());
+		cout << "Enter number of documents for the top queries or -1 to skip:" << endl;
+		int n;
+		cin >> n;
+		if(n == -1)
+		q.query(idx,query);
+		else
+		q.query(idx,query,n);
 	}
 
 	return 0;
