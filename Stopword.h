@@ -19,7 +19,6 @@ private:
 public:
 	Stopword();
 	Stopword(string filename);
-	~Stopword();
 	bool operator ()(string word);
 };
 

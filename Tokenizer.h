@@ -11,7 +11,8 @@
 class Tokenizer {
 public:
 	Tokenizer();
-	virtual ~Tokenizer();
+	~Tokenizer();
+	vector<string> tokenize(string s);
 };
 
 #endif /* TOKENIZER_H_ */

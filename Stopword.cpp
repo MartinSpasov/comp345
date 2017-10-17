@@ -21,7 +21,6 @@ Stopword::Stopword(string filename)
 
 }
 
-Stopword::~Stopword() {}
 
 bool Stopword::operator ()(string word)
 {

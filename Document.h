@@ -1,30 +1,32 @@
-/*
- * Document.h
- *
- *  Created on: Oct 12, 2017
- *      Author: Spasov
- */
 
-#ifndef DOCUMENT_H_
-#define DOCUMENT_H_
+
+#ifndef Document_H_
+#define Document_H_
+
 #include <string>
-#include <vector>
+using namespace std;
 
-class Document {
+class Document{
 
 private:
-	int size;
-	std::string name;
-	std::vector<std::string> content;
-
+	string filename;
+	string filecontent;
+	size_t filesize;
 public:
 	Document();
-	Document(std::string);
-	virtual ~Document();
+	Document(string filename);
+	string name() const;
+	size_t size() const;
+	string content() const;
+	friend istream & operator>>(istream & is,Document & d);
+	friend ostream & operator<<(ostream & os,Document & d);
 
-	std::string getName() const;
-	int getSize() const;
-	std::vector<std::string> getContent() const;
+
+
+
 };
 
-#endif /* DOCUMENT_H_ */
+
+
+
+#endif /* Document_H_ */
