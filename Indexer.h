@@ -1,11 +1,4 @@
-/*
- * indexer.h
- *
- *  overridding operato >> with templates doesnt work when implemented in indexer.cpp
- *  I searched the net and found that it has to be implemented in the .h file
- *
- *
- */
+
 
 #ifndef INDEXER_H_
 #define INDEXER_H_
@@ -71,6 +64,7 @@ public:
 			dft[t] = df;
 		}
 
+		wtd.clear();
 		// looping on the filtered tokens and calculating the document weight wt,d for each token
 		for(map<string, vector<int> >::const_iterator it = tftd2.begin();it != tftd2.end();it++){
 			string t = it->first;
@@ -140,8 +134,8 @@ public:
 	friend ostream & operator <<(ostream & os,indexer<size> & idx){
 		os << endl << "******* Full Document Matrix version *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.documents.size();++i){
-				os << right << setw(20) << idx.documents[i].name();
+			for(int i=0;i<size;++i){
+				os << right << setw(20) << idx[i].name();
 			}
 			os << endl;
 			for(map<string,vector<int> >::iterator it = idx.tftd1.begin();it != idx.tftd1.end();++it){
@@ -158,8 +152,8 @@ public:
 			os << endl;
 			os << endl << "******* Filtered Document Matrix version *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.documents.size();++i){
-				os << right << setw(20) << idx.documents[i].name();
+			for(int i=0;i<size;++i){
+				os << right << setw(20) << idx[i].name();
 			}
 			os << endl;
 			for(map<string,vector<int> >::iterator it = idx.tftd2.begin();it != idx.tftd2.end();++it){
@@ -181,8 +175,8 @@ public:
 
 			os << endl << "******* Tf-idf weight *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.documents.size();++i){
-				os << right << setw(20) << idx.documents[i].name();
+			for(int i=0;i<size;++i){
+				os << right << setw(20) << idx[i].name();
 			}
 			os << endl;
 			for(map<string,vector<double> >::iterator it = idx.wtd.begin();it != idx.wtd.end();++it){

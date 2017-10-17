@@ -4,22 +4,34 @@
 #include "document.h"
 #include "Query_String.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
+
 int main(){
-	document d1("index.txt");
-	cin >> d1;
-	document d2("index2.txt");
-	cin >> d2;
-	document d3("index3.txt");
-	cin >> d3;
-	indexer<3> idx;
-	d1 >> idx;
-	d2 >> idx;
-	d3 >> idx;
+	const int size = 2;
+	indexer<size> idx;
+	cout << "Enter filename:" << endl;
+	string filename;
+	cin >> filename;
+	fstream fin(filename.c_str());
+	for(int i=0;i<size;i++){
+		string d;
+		fin >> d;
+		document doc(d);
+		cin >> doc;
+		doc >> idx;
+	}
 	cout << idx;
 	Query_String q;
-	q.query(idx,"comp345",idx.indexersize());
+	string query = "";
+	while(true){
+		cout << "\nEnter query you want to search for or -1 to exit:" << endl;
+		cin >> query;
+		if(query == "-1")break;
+		q.query(idx,query,idx.indexersize());
+	}
+
 	return 0;
 }
 

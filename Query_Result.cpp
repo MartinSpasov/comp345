@@ -1,1 +1,1 @@
-//no need for query.cpp, same as indexer.h
+//no need for query.cpp, same as indexer.cpp

@@ -5,6 +5,7 @@
 #include "vector"
 #include "document.h"
 #include "indexer.h"
+#include <algorithm>
 using namespace std;
 
 
@@ -88,7 +89,7 @@ public:
 			}
 
 			sort(score.begin(),score.end(), sortpairs);
-			cout << endl << "******* Top scoring documents for the query *********" <<endl;
+			cout << endl << "******* Top scoring documents for the query \"" << s << "\"  *********" <<endl;
 			for(int i=0;i<n;i++){
 				cout << left << setw(20) << score[i].first.name() << right << setw(20) << score[i].second << endl;
 			}
