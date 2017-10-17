@@ -8,7 +8,7 @@
 
 tokenizer::tokenizer(){}
 
-vector<string> tokenize(string s)
+vector<string> tokenizer::tokenize(string s)
 {
 	vector<string> temp;
 	vector<string> tokens;
