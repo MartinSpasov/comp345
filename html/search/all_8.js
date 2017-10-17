@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['query',['query',['../class_query___result.html#a1049d9e7cf86cb9254982ca9dd21be83',1,'Query_Result']]],
-  ['query_5fresult',['Query_Result',['../class_query___result.html',1,'Query_Result'],['../class_query___result.html#aca6caea4d2be58145212fc22c56a5fab',1,'Query_Result::Query_Result()']]],
-  ['query_5fresult_2ecpp',['Query_Result.cpp',['../_query___result_8cpp.html',1,'']]],
-  ['query_5fresult_2eh',['Query_Result.h',['../_query___result_8h.html',1,'']]]
+  ['scorevector',['scorevector',['../class_query___result.html#ad1bd0bdd9ce0daf5a6639cbec3902ba3',1,'Query_Result']]],
+  ['size',['size',['../classdocument.html#a5e8aa3caf18e8da87c5e35e39dc0fb97',1,'document']]],
+  ['stopwords',['stopwords',['../classstopwords.html',1,'stopwords'],['../classstopwords.html#ae07cdf9173446ac3ff166c26ba7f05d4',1,'stopwords::stopwords()'],['../classstopwords.html#a726865f116a88b84c2239e80a1fb872a',1,'stopwords::stopwords(string filename)']]]
 ];

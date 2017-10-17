@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['operator_28_29',['operator()',['../classstopwords.html#a7e237ef49803d27b80d5efcca17f53b3',1,'stopwords']]],
-  ['operator_3c_3c',['operator&lt;&lt;',['../classdocument.html#aafdf2f4ecb817252c0e22f7c072ec5b0',1,'document::operator&lt;&lt;()'],['../classindexer.html#a4cd44dc6d03a38babf45a0d169b8e2f9',1,'indexer::operator&lt;&lt;()'],['../document_8cpp.html#aafdf2f4ecb817252c0e22f7c072ec5b0',1,'operator&lt;&lt;():&#160;document.cpp']]],
-  ['operator_3e_3e',['operator&gt;&gt;',['../classindexer.html#acc00d8a4c0566834cfd546cbe1b1277c',1,'indexer']]],
-  ['operator_5b_5d',['operator[]',['../classindexer.html#adc66db3d96debb4a309ed586dad01fe0',1,'indexer']]]
+  ['query',['query',['../class_query___result.html#a1049d9e7cf86cb9254982ca9dd21be83',1,'Query_Result']]],
+  ['query_5fresult',['Query_Result',['../class_query___result.html',1,'Query_Result'],['../class_query___result.html#aca6caea4d2be58145212fc22c56a5fab',1,'Query_Result::Query_Result()']]]
 ];

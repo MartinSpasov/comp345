@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main',['main',['../googler_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'googler.cpp']]]
+  ['name',['name',['../classdocument.html#a19e6fd5bb89537dc566df2eac658e5a6',1,'document']]],
+  ['normalize',['normalize',['../classindexer.html#ab5cbbf9140803fe99b1c563ec8a14a3d',1,'indexer']]]
 ];

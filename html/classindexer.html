@@ -9,6 +9,13 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -42,6 +49,21 @@ $(function() {
 });
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classindexer.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -56,7 +78,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
@@ -67,13 +88,11 @@ $(function() {
 <div class="title">indexer&lt; size &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p><code>#include &lt;<a class="el" href="indexer_8h_source.html">indexer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aeadc68a96ef7492b4d320eaf470fb5f6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classindexer.html#aeadc68a96ef7492b4d320eaf470fb5f6">Exceptions</a> { <a class="el" href="classindexer.html#aeadc68a96ef7492b4d320eaf470fb5f6a08c649ada6e07b70a5039c71dbf4a018">INDEX_NOT_NORMALIZED</a>
- }<tr class="memdesc:aeadc68a96ef7492b4d320eaf470fb5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">an exception to be thrown when attemptin to query an un-normalized indexer.  <a href="classindexer.html#aeadc68a96ef7492b4d320eaf470fb5f6">More...</a><br /></td></tr>
+<tr class="memitem:aeadc68a96ef7492b4d320eaf470fb5f6"><td class="memItemLeft" align="right" valign="top"><a id="aeadc68a96ef7492b4d320eaf470fb5f6"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classindexer.html#aeadc68a96ef7492b4d320eaf470fb5f6">Exceptions</a> { <b>INDEX_NOT_NORMALIZED</b>
+ }<tr class="memdesc:aeadc68a96ef7492b4d320eaf470fb5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">an exception to be thrown when attemptin to query an un-normalized indexer. <br /></td></tr>
 </td></tr>
 <tr class="separator:aeadc68a96ef7492b4d320eaf470fb5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -116,28 +135,6 @@ Friends</h2></td></tr>
 <tr class="memdesc:a4cd44dc6d03a38babf45a0d169b8e2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">an operator&lt;&lt; overload  <a href="#a4cd44dc6d03a38babf45a0d169b8e2f9">More...</a><br /></td></tr>
 <tr class="separator:a4cd44dc6d03a38babf45a0d169b8e2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="aeadc68a96ef7492b4d320eaf470fb5f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeadc68a96ef7492b4d320eaf470fb5f6">&#9670;&nbsp;</a></span>Exceptions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int size&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="classindexer.html#aeadc68a96ef7492b4d320eaf470fb5f6">indexer::Exceptions</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>an exception to be thrown when attemptin to query an un-normalized indexer. </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aeadc68a96ef7492b4d320eaf470fb5f6a08c649ada6e07b70a5039c71dbf4a018"></a>INDEX_NOT_NORMALIZED&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa84c11d5277a9575f17ef3c04051031f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa84c11d5277a9575f17ef3c04051031f">&#9670;&nbsp;</a></span>indexer()</h2>
@@ -518,11 +515,15 @@ template&lt;int size&gt; </div>
 <li><a class="el" href="indexer_8h_source.html">indexer.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.13
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classindexer.html">indexer</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
 </body>
 </html>

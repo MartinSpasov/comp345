@@ -1,33 +1,27 @@
 var indexSectionsWithContent =
 {
-  0: "cdegimnoqst",
+  0: "cdeginoqst",
   1: "diqst",
-  2: "dgiqst",
-  3: "cdgimnoqst",
-  4: "e",
-  5: "i",
-  6: "o"
+  2: "cdginoqst",
+  3: "e",
+  4: "o"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "files",
-  3: "functions",
-  4: "enums",
-  5: "enumvalues",
-  6: "related"
+  2: "functions",
+  3: "enums",
+  4: "related"
 };
 
 var indexSectionLabels =
 {
   0: "All",
   1: "Classes",
-  2: "Files",
-  3: "Functions",
-  4: "Enumerations",
-  5: "Enumerator",
-  6: "Friends"
+  2: "Functions",
+  3: "Enumerations",
+  4: "Friends"
 };
 
