@@ -38,6 +38,6 @@ string document::content() const{
 
 ostream & operator<<(ostream & os,document & d){
 
-	cout << d.filecontent;
+	os << d.filecontent;
 	return os;
 }
