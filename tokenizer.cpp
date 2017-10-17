@@ -1,13 +1,20 @@
-
-
 #include "tokenizer.h"
 #include "stopwords.h"
 #include <algorithm>
 #include <sstream>
 #include <iterator>
 
+/*!
+ * The default constructor does nothing, since tokenizer has no instance variables.
+ */
 tokenizer::tokenizer(){}
 
+/*!
+ * The tokenize method takes a string s, and first breaks it into an vector by dividing words by whitespace.
+ * It then takes every string in the vector, makes it lowercase and removes any punctuation. (i.e. 'i-e.F' would become 'ief').
+ * It then adds the new string to a new vector.
+ * Finally, it returns the new vector of lowercase words with no punctuation.
+ */
 vector<string> tokenizer::tokenize(string s)
 {
 	vector<string> temp;

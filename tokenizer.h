@@ -11,10 +11,15 @@ class tokenizer{
 
 
 public:
+    //! @brief A default constructor.
 	tokenizer();
+
+    //! @brief A method to break down a string into a set of strings.
+    /*!
+     * @param s: the string to be broken down.
+     * @return a vector<string>: the set of strings that make up s, minus whitespaces and punctuation.
+     */
 	vector<string> tokenize(string s);
-
-
 };
 
 

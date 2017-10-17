@@ -46,10 +46,10 @@ public:
 
 	//! @brief A friend operator<< overload.
 	/*!
-	 * Prints the document information
-	 * @param is:
+	 * Puts document's information into an ostream
+	 * @param os: the ostream into which we put document information
 	 * @param d: the document which's information we print out
-	 * @return
+	 * @return an ostream: the contents of document
 	 */
 	friend ostream & operator<<(ostream & os,document & d);
 
