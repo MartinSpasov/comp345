@@ -4,10 +4,11 @@
 #include "stopwords.h"
 #include <algorithm>
 #include <sstream>
+#include <iterator>
 
 tokenizer::tokenizer(){}
 
-vector<string> tokenizer::tokenize(string s)
+vector<string> tokenize(string s)
 {
 	vector<string> temp;
 	vector<string> tokens;
