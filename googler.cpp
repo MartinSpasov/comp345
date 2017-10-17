@@ -2,7 +2,7 @@
 
 #include "indexer.h"
 #include "document.h"
-#include "Query_String.h"
+#include "Query_Result.h"
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -22,7 +22,7 @@ int main(){
 		doc >> idx;
 	}
 	cout << idx;
-	Query_String q;
+	Query_Result q;
 	string query = "";
 	while(true){
 		cout << "\nEnter query you want to search for or -1 to exit:" << endl;

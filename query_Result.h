@@ -9,12 +9,12 @@
 using namespace std;
 
 
-class Query_String{
+class Query_Result{
 
 private:
 	vector<pair<document,double> > score;
 public:
-	Query_String(){}
+	Query_Result(){}
 	const vector<pair<document,double> > & scorevector(){
 		return score;
 	}
