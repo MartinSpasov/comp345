@@ -11,7 +11,6 @@
 class Tokenizer {
 public:
 	Tokenizer();
-	~Tokenizer();
 	vector<string> tokenize(string s);
 };
 
