@@ -44,14 +44,6 @@ public:
 	 */
 	string content() const;
 
-	//! @brief A friend operator>> overload
-	/*!
-	 * @param is:
-	 * @param d: 
-	 * @return
-	 */
-	friend istream & operator>>(istream & is,document & d);
-
 	//! @brief A friend operator<< overload.
 	/*!
 	 * Prints the document information

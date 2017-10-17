@@ -19,7 +19,6 @@ int main(){
 		string d;
 		fin >> d;
 		document doc(d);
-		cin >> doc;
 		doc >> idx;
 	}
 	cout << idx;
