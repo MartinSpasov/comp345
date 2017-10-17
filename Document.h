@@ -1,25 +1,25 @@
 
 
-#ifndef Document_H_
-#define Document_H_
+#ifndef DOCUMENT_H_
+#define DOCUMENT_H_
 
 #include <string>
 using namespace std;
 
-class Document{
+class document{
 
 private:
 	string filename;
 	string filecontent;
 	size_t filesize;
 public:
-	Document();
-	Document(string filename);
+	document();
+	document(string filename);
 	string name() const;
 	size_t size() const;
 	string content() const;
-	friend istream & operator>>(istream & is,Document & d);
-	friend ostream & operator<<(ostream & os,Document & d);
+	friend istream & operator>>(istream & is,document & d);
+	friend ostream & operator<<(ostream & os,document & d);
 
 
 
@@ -29,4 +29,4 @@ public:
 
 
 
-#endif /* Document_H_ */
+#endif /* DOCUMENT_H_ */

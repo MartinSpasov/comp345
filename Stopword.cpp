@@ -1,33 +1,30 @@
-/*
- * Stopword.cpp
- *
- *  Created on: Oct 12, 2017
- *      Author: Spasov
- */
 
-#include "Stopword.h"
+#include "stopwords.h"
 #include <fstream>
 
-Stopword::Stopword() {}
+stopwords::stopwords()
+{
 
+}
 
-Stopword::Stopword(string filename)
+stopwords::stopwords(string fname)
+	:filename(fname)
 {
 	ifstream fin(filename);
 	string words;
 	while(fin >> words){
-		stopwords.push_back(words);
+		stopword.push_back(words);
 	}
 
 }
 
-
-bool Stopword::operator ()(string word)
+bool stopwords::operator ()(string word)
 {
 
-	for(string w:stopwords){
+	for(string w:stopword){
 		if(w == word)return true;
 	}
 	return false;
 }
+
 

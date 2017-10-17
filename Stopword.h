@@ -1,25 +1,23 @@
-/*
- * Stopword.h
- *
- *  Created on: Oct 12, 2017
- *      Author: Spasov
- */
 
-#ifndef STOPWORD_H_
-#define STOPWORD_H_
-#include <string>
+
+#ifndef STOPWORDS_H_
+#define STOPWORDS_H_
+
 #include <vector>
+#include <string>
 using namespace std;
 
-class Stopword {
+class stopwords{
 
 private:
-	vector<string> stopdwords;
-
+	string filename;
+	vector<string> stopword;
 public:
-	Stopword();
-	Stopword(string filename);
+	stopwords();
+	stopwords(string filename);
 	bool operator ()(string word);
+
 };
 
-#endif /* STOPWORD_H_ */
+
+#endif /* STOPWORDS_H_ */

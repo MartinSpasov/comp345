@@ -1,18 +1,18 @@
 /*
- * Indexer.h
+ * indexer.h
  *
- *  overridding operato >> with templates doesnt work when implemented in Indexer.cpp
+ *  overridding operato >> with templates doesnt work when implemented in indexer.cpp
  *  I searched the net and found that it has to be implemented in the .h file
- *	same for << it is also the same way implemented in notes.
+ *
  *
  */
 
-#ifndef Indexer_H_
-#define Indexer_H_
+#ifndef INDEXER_H_
+#define INDEXER_H_
 
-#include "Document.h"
-#include "Stopword.h"
-#include "Tokenizer.h"
+#include "document.h"
+#include "stopwords.h"
+#include "tokenizer.h"
 #include <vector>
 #include <iomanip>
 #include <iostream>
@@ -21,34 +21,46 @@
 using namespace std;
 
 template<int size>
-class Indexer{
+class indexer{
 
 private:
 	int N; // number of documnents
 	bool normalized; // keep tracking of normalized status
 	stopwords stpw; // stopword list
-	vector<Document> Documents;
-	map<string,int> dft; // number of Documents a token appears in
+	vector<document> documents;
+	map<string,int> dft; // number of documents a token appears in
 	map<string,vector<int> > tftd1; // total tokens or words
 	map<string,vector<int> > tftd2; // tokens with removed stopwords
-	map<string,vector<double> > wtd; // weight of token in each Document
+	map<string,vector<double> > wtd; // weight of token in each document
 	vector<int>total1;
 	vector<int>total2;
 public:
-	Indexer<size>()
-	:N(0),normalized(false),stpw(Stopword("stopwords.txt"))
+	indexer<size>()
+	:N(0),normalized(false),stpw(stopwords("stopwords.txt"))
 	{
 
 	}
-	int Indexersize(){
+	int indexersize(){
 		return size;
 	}
 	bool isNormalize(){
 		return normalized;
 	}
+	stopwords getstpw(){
+		return stpw;
+	}
+	vector<document> getdocuments(){
+		return documents;
+	}
+	map<string,vector<int> > getTFtd2(){
+		return tftd2;
+	}
+	map<string,vector<double> > getWtd(){
+		return wtd;
+	}
 	void normalize(){
 	normalized = true;
-		// looping on the filtered tokens and calculating the Document frequency for each token
+		// looping on the filtered tokens and calculating the document frequency for each token
 		for(map<string, vector<int> >::const_iterator it = tftd2.begin();it != tftd2.end();it++){
 			string t = it->first;
 			int df = 0;
@@ -59,12 +71,12 @@ public:
 			dft[t] = df;
 		}
 
-		// looping on the filtered tokens and calculating the Document weight wt,d for each token
+		// looping on the filtered tokens and calculating the document weight wt,d for each token
 		for(map<string, vector<int> >::const_iterator it = tftd2.begin();it != tftd2.end();it++){
 			string t = it->first;
 			for(int j=0;j<tftd2[t].size();j++){
 				// formula from assignment
-				double s = Indexersize();
+				double s = indexersize();
 				double d = dft[t];
 				double tf = tftd2[t][j];
 				double temp1 = 1+((double)log(tf)/(double)log(10));
@@ -77,17 +89,17 @@ public:
 			}
 		}
 	}
-	const Document & operator [](int n){
-		return Documents[n];
+	const document & operator [](int n){
+		return documents[n];
 	}
-	friend const Document & operator >>(Document & d,Indexer<size> & idx){
-			idx.normalized = false; // reading new Document so Indexer not normalized
-			idx.Documents.push_back(d); // pushing Document to documnet vector
-			string cont = d.content(); // string content of Document
+	friend const document & operator >>(document & d,indexer<size> & idx){
+			idx.normalized = false; // reading new document so indexer not normalized
+			idx.documents.push_back(d); // pushing document to documnet vector
+			string cont = d.content(); // string content of document
 			int total_1 = 0;
 			int total_2 = 0;
 			tokenizer t;
-			vector<string> tokens = t.tokenize(cont); // changing the content of Document into tokens
+			vector<string> tokens = t.tokenize(cont); // changing the content of document into tokens
 
 			// same as assignment 1 pushing zeros then incrementing the token
 			for(int i=0;i<tokens.size();i++){
@@ -122,14 +134,14 @@ public:
 			idx.total1.push_back(total_1);
 			idx.total2.push_back(total_2);
 			idx.normalize();
-			idx.N++; // counter for index of which Document is read
+			idx.N++; // counter for index of which document is read
 			return d;
 	}
-	friend ostream & operator <<(ostream & os,Indexer<size> & idx){
+	friend ostream & operator <<(ostream & os,indexer<size> & idx){
 		os << endl << "******* Full Document Matrix version *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.Documents.size();++i){
-				os << right << setw(20) << idx.Documents[i].name();
+			for(int i=0;i<idx.documents.size();++i){
+				os << right << setw(20) << idx.documents[i].name();
 			}
 			os << endl;
 			for(map<string,vector<int> >::iterator it = idx.tftd1.begin();it != idx.tftd1.end();++it){
@@ -146,8 +158,8 @@ public:
 			os << endl;
 			os << endl << "******* Filtered Document Matrix version *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.Documents.size();++i){
-				os << right << setw(20) << idx.Documents[i].name();
+			for(int i=0;i<idx.documents.size();++i){
+				os << right << setw(20) << idx.documents[i].name();
 			}
 			os << endl;
 			for(map<string,vector<int> >::iterator it = idx.tftd2.begin();it != idx.tftd2.end();++it){
@@ -169,8 +181,8 @@ public:
 
 			os << endl << "******* Tf-idf weight *********" <<endl;
 			os << left << setw(20) << "Dictionary";
-			for(int i=0;i<idx.Documents.size();++i){
-				os << right << setw(20) << idx.Documents[i].name();
+			for(int i=0;i<idx.documents.size();++i){
+				os << right << setw(20) << idx.documents[i].name();
 			}
 			os << endl;
 			for(map<string,vector<double> >::iterator it = idx.wtd.begin();it != idx.wtd.end();++it){
@@ -187,9 +199,9 @@ public:
 
 };
 
-bool sortpairs(const pair<Document,double> &a,const pair<Document,double> &b);
+bool sortpairs(const pair<document,double> &a,const pair<document,double> &b);
 
 
-#endif /* Indexer_H_ */
+#endif /* INDEXER_H_ */
 
 

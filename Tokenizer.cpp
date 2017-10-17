@@ -1,17 +1,17 @@
 
-#include "Tokenizer.h"
-#include "Stopword.h"
+
+#include "tokenizer.h"
+#include "stopwords.h"
 #include <algorithm>
 #include <sstream>
 
-Tokenizer::Tokenizer(){}
+tokenizer::tokenizer(){}
 
-
-vector<string> Tokenizer::tokenize(string s)
+vector<string> tokenizer::tokenize(string s)
 {
 	vector<string> temp;
 	vector<string> tokens;
-	Stopword stpw("stopwords.txt");
+	stopwords stpw("stopwords.txt");
 	istringstream iss(s);
 	// splitting by whitespace and pushing to array temp
 	copy(istream_iterator<string>(iss),istream_iterator<string>(),back_inserter(temp));

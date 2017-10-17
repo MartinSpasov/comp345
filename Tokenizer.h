@@ -1,17 +1,20 @@
-/*
- * Tokenizer.h
- *
- *  Created on: Oct 12, 2017
- *      Author: Spasov
- */
+
 
 #ifndef TOKENIZER_H_
 #define TOKENIZER_H_
+#include <string>
+using namespace std;
 
-class Tokenizer {
+class tokenizer{
+
+
 public:
-	Tokenizer();
+	tokenizer();
 	vector<string> tokenize(string s);
+
+
 };
+
+
 
 #endif /* TOKENIZER_H_ */

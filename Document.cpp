@@ -1,37 +1,35 @@
 
 
-#include "Document.h"
+#include "document.h"
 #include <iostream>
 #include <fstream>
 
 
-// intialize document with filename and size 0
-Document::Document(string name)
+document::document(string name)
 	:filename(name),filesize(0)
 {
 
 
 }
-// empty constructor
-Document::Document()
+document::document()
 	:filename(""),filecontent(""),filesize(0)
 {
 
 }
 
-string Document::name() const{
+string document::name() const{
 	return filename;
 }
 
-size_t Document::size() const{
+size_t document::size() const{
 	return filesize;
 }
 
-string Document::content() const{
+string document::content() const{
 	return filecontent;
 }
-// read file content and store in document
-istream & operator>>(istream & is,Document & d)
+
+istream & operator>>(istream & is,document & d)
 {
 
 	ifstream fin(d.filename);
@@ -44,8 +42,7 @@ istream & operator>>(istream & is,Document & d)
 	return is;
 }
 
-// print file content
-ostream & operator<<(ostream & os,Document & d){
+ostream & operator<<(ostream & os,document & d){
 
 	cout << d.filecontent;
 	return os;
