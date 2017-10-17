@@ -18,7 +18,6 @@ public:
 	string name() const;
 	size_t size() const;
 	string content() const;
-	friend istream & operator>>(istream & is,document & d);
 	friend ostream & operator<<(ostream & os,document & d);
 
 

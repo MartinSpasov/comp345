@@ -6,9 +6,15 @@
 
 
 document::document(string name)
-	:filename(name),filesize(0)
+	:filename(name)
 {
-
+		fstream fin(filename);
+		string content;
+		while(fin >> content){
+			filecontent += content + " ";
+		}
+		filecontent = filecontent.substr(0,filecontent.size()-1);
+		filesize = filecontent.size();
 
 }
 document::document()
@@ -29,18 +35,7 @@ string document::content() const{
 	return filecontent;
 }
 
-istream & operator>>(istream & is,document & d)
-{
 
-	ifstream fin(d.filename);
-	string content;
-	while(fin >> content){
-		d.filecontent += content + " ";
-	}
-	d.filecontent = d.filecontent.substr(0,d.filecontent.size()-1);
-	d.filesize = d.filecontent.size();
-	return is;
-}
 
 ostream & operator<<(ostream & os,document & d){
 
