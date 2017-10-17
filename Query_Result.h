@@ -20,6 +20,7 @@ public:
 	}
 	template<int size>
 	vector<pair<document,double> > query(indexer<size>  idx,string s,int n = 10){
+		score.clear();
 		if(!idx.isNormalize())
 		throw idx.INDEX_NOT_NORMALIZED;
 		tokenizer t;
