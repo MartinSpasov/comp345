@@ -5,7 +5,7 @@
 #include <iterator>
 
 /*!
- * The default constructor does nothing, since tokenizer has no instance variables.
+ * Is necessary for compilation.
  */
 tokenizer::tokenizer(){}
 
