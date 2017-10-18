@@ -59,7 +59,7 @@ public:
 					}
 
 				}
-				map<string,vector<double> > wtdq;
+				map<string,double > wtdq;
 				map<string,int> dftq;
 
 				for(map<string,int >::const_iterator it = queryfrequency.begin();it != queryfrequency.end();it++){
@@ -80,19 +80,22 @@ public:
 							double temp2 = (double)log(s/d)/(double)log(10);
 							double Wtd = temp1*temp2;
 							if(Wtd == -INFINITY || Wtd == INFINITY || isnan(Wtd))
-							wtdq[t].push_back(0);
+							wtdq[t] = 0;
 							else
-							wtdq[t].push_back(Wtd);
+							wtdq[t] = Wtd;
+
 					}
+
 
 					for(int i=0;i<size;i++){
 						double Wiqij = 0;
 						double Wiq = 0;
 						double Wij = 0;
-						for(map<string, vector<double> >::const_iterator it = wtdq.begin();it != wtdq.end();it++){
+						for(map<string, double >::const_iterator it = wtdq.begin();it != wtdq.end();it++){
 							if(idx.getWtd()[it->first].size() != 0)
-							Wiqij += (it->second[i] * idx.getWtd()[it->first][i]);
-							Wiq += pow(it->second[i],2);
+							Wiqij += (it->second * idx.getWtd()[it->first][i]);
+							double wiq = it->second;
+							Wiq += pow(wiq,2);
 							if(idx.getWtd()[it->first].size() != 0)
 							Wij += pow(idx.getWtd()[it->first][i],2);
 						}
