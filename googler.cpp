@@ -28,7 +28,8 @@ int main(){
 	string query = "";
 	while(true){
 		cout << "\nEnter query you want to search for or -1 to exit:" << endl;
-		cin >> query;
+		cin.ignore();
+		getline(cin, query);
 		if(query == "-1")break;
 		cout << "Enter number of documents for the top queries or -1 to skip:" << endl;
 		int n;
@@ -37,7 +38,7 @@ int main(){
 		q.query(idx,query);
 		else
 		q.query(idx,query,n);
-	}
+		}
 
 	return 0;
 }
