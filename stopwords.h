@@ -19,6 +19,8 @@ public:
 	//! @brief A default constructor.
 	stopwords();
 
+	~stopwords();
+
 	//! @brief Anoter constructor.
 	/*!
 	 * @param filename: the filename of the stopwords to be constructed.

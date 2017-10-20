@@ -20,6 +20,9 @@ document::document(string name)
 
 }
 
+
+document::~document(){ }
+
 /*!
  * The default constrocur sets the filename and content to "", and the size to 0
  */

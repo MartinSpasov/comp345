@@ -11,8 +11,8 @@ using namespace std;
 
 
 int main(){
-	const int size = 2;
-	indexer<size> idx;
+	const int size = 3;
+	indexer<size>* idx = new indexer<size>;
 	cout << "Enter filename:" << endl;
 	string filename;
 	cin >> filename;
@@ -20,12 +20,14 @@ int main(){
 	for(int i=0;i<size;i++){
 		string d;
 		fin >> d;
-		document doc(d);
-		doc >> idx;
+		document* doc = new document(d);
+		*doc >> *idx;
+		delete doc;
 	}
-	cout << idx;
-	Query_Result q;
+	cout << *idx;
+	Query_Result* q = new Query_Result;
 	string query = "";
+
 	while(true){
 		cout << "\nEnter query you want to search for or -1 to exit:" << endl;
 		cin.ignore();
@@ -35,11 +37,12 @@ int main(){
 		int n;
 		cin >> n;
 		if(n == -1)
-		q.query(idx,query);
+		q->query(*idx,query);
 		else
-		q.query(idx,query,n);
-		}
-
+		q->query(*idx,query,n);
+	}
+	delete q;
+	delete idx;
 	return 0;
 }
 

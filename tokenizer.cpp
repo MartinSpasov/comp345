@@ -7,7 +7,9 @@
 /*!
  * Is necessary for compilation.
  */
-tokenizer::tokenizer(){}
+tokenizer::tokenizer(){ }
+
+tokenizer::~tokenizer(){ }
 
 /*!
  * The tokenize method takes a string s, and first breaks it into an vector by dividing words by whitespace.

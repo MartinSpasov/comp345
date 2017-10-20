@@ -24,7 +24,7 @@ private:
 	bool normalized;
 
 	//! @brief a private stopwords: the stopwords the indexer should keep track of.
-	stopwords stpw;
+	stopwords *stpw;
 
 	//! @brief a private vector of documents: the list of documents which's score the indexer should keep.
 	vector<document> documents;
@@ -56,9 +56,13 @@ public:
 	 * Initializes the indexer's N to 0, normalized to false, and stpw to a stopwords ("stopwords.txt").
 	 */
 	indexer<size>()
-	:N(0),normalized(false),stpw(stopwords("stopwords.txt"))
+	:N(0),normalized(false),stpw(new stopwords("stopwords.txt"))
 	{
 
+	}
+
+	~indexer<size>(){
+		delete stpw;
 	}
 
 	//! @brief an accessor for size.
@@ -81,7 +85,7 @@ public:
 	/*!
 	 * @return the indexer's stopwords.
 	 */
-	stopwords getstpw(){
+	stopwords* getstpw(){
 		return stpw;
 	}
 
@@ -89,7 +93,7 @@ public:
 	/*!
 	 * @return the documents in indexer.
 	 */
-	vector<document> getdocuments(){
+	vector<document> & getdocuments(){
 		return documents;
 	}
 
@@ -97,7 +101,7 @@ public:
 	/*!
 	 * @return the indexer's tftd2.
 	 */
-	map<string,vector<int> > getTFtd2(){
+	map<string,vector<int> > & getTFtd2(){
 		return tftd2;
 	}
 
@@ -105,7 +109,7 @@ public:
 	/*!
 	 * @return the indexer's wtd.
 	 */
-	map<string,vector<double> > getWtd(){
+	map<string,vector<double> > & getWtd(){
 		return wtd;
 	}
 
@@ -165,49 +169,50 @@ public:
 	 * @return the document d.
 	 */
 	friend const document & operator >>(document & d,indexer<size> & idx){
-			idx.normalized = false; // reading new document so indexer not normalized
-			idx.documents.push_back(d); // pushing document to documnet vector
-			string cont = d.content(); // string content of document
-			int total_1 = 0;
-			int total_2 = 0;
-			tokenizer t;
-			vector<string> tokens = t.tokenize(cont); // changing the content of document into tokens
+		idx.normalized = false; // reading new document so indexer not normalized
+		idx.documents.push_back(d); // pushing document to documnet vector
+		string cont = d.content(); // string content of document
+		int total_1 = 0;
+		int total_2 = 0;
+		tokenizer* t = new tokenizer;
+		vector<string> tokens = t->tokenize(cont); // changing the content of document into tokens
 
-			// same as assignment 1 pushing zeros then incrementing the token
-			for(int i=0;i<tokens.size();i++){
-				string s = tokens[i];
-				if(idx.stpw(s)){
+		// same as assignment 1 pushing zeros then incrementing the token
+		for(int i=0;i<tokens.size();i++){
+			string s = tokens[i];
+			if(idx.stpw->operator ()(s)){
+			if(idx.tftd1[s].size() == 0){
+			for(int i=0;i<size;i++){
+					idx.tftd1[s].push_back(0);
+				}
+			}
+			idx.tftd1[s][idx.N]++;
+			total_1++;
+			}
+			else{
 				if(idx.tftd1[s].size() == 0){
 				for(int i=0;i<size;i++){
 						idx.tftd1[s].push_back(0);
 					}
 				}
 				idx.tftd1[s][idx.N]++;
-				total_1++;
-				}
-				else{
-					if(idx.tftd1[s].size() == 0){
-					for(int i=0;i<size;i++){
-							idx.tftd1[s].push_back(0);
-						}
-					}
-					idx.tftd1[s][idx.N]++;
 
-					if(idx.tftd2[s].size() == 0){
-					for(int i=0;i<size;i++){
-							idx.tftd2[s].push_back(0);
-						}
+				if(idx.tftd2[s].size() == 0){
+				for(int i=0;i<size;i++){
+						idx.tftd2[s].push_back(0);
 					}
-					idx.tftd2[s][idx.N]++;
-					total_1++;
-					total_2++;
 				}
+				idx.tftd2[s][idx.N]++;
+				total_1++;
+				total_2++;
 			}
-			idx.total1.push_back(total_1);
-			idx.total2.push_back(total_2);
-			idx.normalize();
-			idx.N++; // counter for index of which document is read
-			return d;
+		}
+		idx.total1.push_back(total_1);
+		idx.total2.push_back(total_2);
+		idx.normalize();
+		idx.N++; // counter for index of which document is read
+		delete t;
+		return d;
 	}
 
 	//! @brief an operator<< overload
