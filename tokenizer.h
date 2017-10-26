@@ -14,6 +14,8 @@ public:
     //! @brief A default constructor.
 	tokenizer();
 
+	~tokenizer();
+
     //! @brief A method to break down a string into a set of strings.
     /*!
      * @param s: the string to be broken down.

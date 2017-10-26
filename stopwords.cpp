@@ -7,6 +7,8 @@
  */
 stopwords::stopwords() { }
 
+stopwords::~stopwords(){ }
+
 /*!
  * The other constructor takes a string fname and sets it as its filename.
  * It then creates a filestream from the filename, and reads every word in the filestream into the stopword vector.

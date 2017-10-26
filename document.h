@@ -21,6 +21,8 @@ public:
 	//! @brief A default contructor.
 	document();
 
+	~document();
+
 	//! @brief Another constructor.
 	/*!  @param filename: filname of the document to be constructed.
 	 */
